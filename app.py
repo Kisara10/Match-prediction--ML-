@@ -29,12 +29,15 @@ ground = st.selectbox("Select Ground", grounds)
 
 if st.button("Predict Winner"):
 
-    team1_encoded = le.transform([team1])[0]
-    team2_encoded = le.transform([team2])[0]
-    ground_encoded = le.transform([ground])[0]
+    if team1 == team2:
+        st.warning("Please select two differnt teams")
+
+    team1_encoded = team1_encoder.transform([team1])[0]
+    team2_encoded = team2_encoder.transform([team2])[0]
+    ground_encoded = ground_encoder.transform([ground])[0]
 
     prediction = model.predict([[team1_encoded, team2_encoded, ground_encoded]])
 
-    winner = le.inverse_transform(prediction)[0]
+    winner = winner_encoder.inverse_transform(prediction)[0]
 
     st.success(f"Predicted Winner: {winner}")
