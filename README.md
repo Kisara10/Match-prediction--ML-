@@ -72,3 +72,12 @@ predict_match("India", "Australia", "Melbourne")
 - Improve prediction accuracy with feature engineering
 - Build a web interface for real-time predictions
 
+## Run the Application
+
+Install dependencies:
+
+pip install -r requirements.txt
+
+## Run the streamlit app
+
+python -m streamlit run app.py
